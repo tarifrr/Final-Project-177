@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}     
+\usepackage{alltt}                 
+\usepackage{graphicx}
+\title{Exercises}
+\author{
+   \\Tarif Rahman
+  \and
+    \\Robin Jha}
+\begin{document}
+\maketitle
+\section{Problem Set}
+This problem set is designed to for reader to get a hands on experience with the concepts they learned in the tutorial.
+  \\ \\1. How do you read an image?
+  \vspace {5 mm}
+  \\2. Once the image is read how do you check if the image has been saved in the buffer? 
+  \vspace {5 mm}
+  \\3. Say the image you chose has regions which has regions of high as well as low contrast. What operation do you need to perform to even out the contrast? Try applying the function to the image in the buffer. What do you see?
+  \vspace {5 mm}
+  \\4. What do you do to reduce the noise in your image? Write down the syntax for the operation.
+   \vspace {5 mm}
+  \\5. List the steps you need to carry out to find the edges in the image read in problem 1 and write the syntax for it.
+   \vspace {10 mm}
+\section{Solutions}
+1. To read an image, use the imread command.
+   \vspace {1 mm}
+   \begin{verbatim}
+   I = imread('example:tif')
+   \end{verbatim}
+   \vspace {5 mm}
+2. Use imshow for displaying images.
+   \vspace {1 mm}
+   \begin{verbatim}
+   imshow(I)
+   \end{verbatim}
+   \vspace {5 mm}
+3. To adjust the contrast automatically use the function histeq to evenly distribute the    image's pixel values.This process flattens and spreads out this histogram.
+	\vspace {1 mm}
+   \begin{verbatim}
+   I = imread('example:tif');
+   J = histeq(I);
+   \end{verbatim}
+   \vspace {5 mm}
+4. Median filter. It is used in image processing to reduce "salt and pepper" noise. A median filter simultaneously reduces noise and preserve edges. 
+\vspace {1 mm}
+   \begin{verbatim}
+   I2 = medfilt2('example:tif')
+   \end{verbatim}
+   \vspace {5 mm}
+5. The first step is to convert it to gray scale and then apply the canny method.
+\vspace {1 mm}
+\begin{verbatim}
+   I2 = rgb2gray('example:tif ')
+   BW = edge(example:tif ;'canny')
+   \end{verbatim}
+  
+\end{document}
